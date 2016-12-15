@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+
+	<div class="container">
+		<div th:fragment="modaisAutores">
+			<!-- Modal para Incluir um autor -->
+		  	<div class="modal fade" th:id="@{novoAutorModal}" tabindex="-1" role="dialog">
+		    	<div class="modal-dialog">
+		    	<!-- Conteúdo do modal-->
+			    	<div class="modal-content">
+				        <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal">&times;</button>
+				            <h4 class="modal-title">Inclusão de Autor </h4>
+				        </div>
+				        <div class="modal-body">
+					         <form>
+					              <div class="form-group">
+					                  <label for="primeiroNome">Nome</label>
+					                  <input type="text" class="form-control input-sm" id="primeiroNome" placeholder="Nome"/>
+					              </div>
+					              <div class="form-group">
+					                  <label for="ultimoNome">Sobrenome</label>
+					                  <input type="text" class="form-control input-sm" id="ultimoNome" placeholder="Sobrenome"/>
+					              </div>
+					              <div class="form-group">
+					                  <label for="pais">País</label>
+					                  <input type="text" class="form-control input-sm" id="pais" placeholder="Pais"/>
+					              </div>
+					              <button type="button" class="btn btn-info btn-sm" onclick="exibirAlertaSucesso()">Cadastrar</button>
+					              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+					          </form>
+				        </div>
+			    	</div>
+		    	</div>
+		    </div>  <!--  Fim do modal -->
+	    
+		    <!-- Modal para Alterar um autor -->
+		  	<div class="modal fade" th:id="@{alterarAutorModal}" tabindex="-1" role="dialog">
+		    	<div class="modal-dialog">
+		    	<!-- Conteúdo do modal-->
+			    	<div class="modal-content">
+				        <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal">&times;</button>
+				            <h4 class="modal-title">Alteração de Autor </h4>
+				        </div>
+				        <div class="modal-body">
+					         <form>
+					              <div class="form-group">
+					                  <label for="primeiroNome">Nome</label>
+					                  <input type="text" class="form-control input-sm" id="primeiroNome" value="Rui"/>
+					              </div>
+					              <div class="form-group">
+					                  <label for="ultimoNome">Sobrenome</label>
+					                  <input type="text" class="form-control input-sm" id="ultimoNome" value="Barbosa"/>
+					              </div>
+					              <div class="form-group">
+					                  <label for="pais">País</label>
+					                  <input type="text" class="form-control input-sm" id="pais" value="Brasil"/>
+					              </div>
+					              <button type="button" class="btn btn-info btn-sm" onclick="exibirAlertaSucessoAlteracao()">Alterar</button>
+					              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+					          </form>
+				        </div>
+			    	</div>
+		    	</div>
+		    </div>  <!--  Fim do modal -->
+	    
+	     	<!-- Modal para confirmar a exclusão de um autor -->
+		  	<div class="modal fade" th:id="@{excluirAutorModal}" tabindex="-1" role="dialog">
+		    	<div class="modal-dialog">
+		    	<!-- Conteúdo do modal-->
+			    	<div class="modal-content">
+				        <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal">&times;</button>
+				            <h4 class="modal-title">Exclusão de Autor </h4>
+				        </div>
+				        <div class="modal-body">
+				        	 <h3>Deseja realmente excluir o autor?</h3>
+					         <form>
+					              <button type="button" class="btn btn-info btn-sm" onclick="exibirAlertaSucessoExclusao()">Excluir</button>
+					              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+					          </form>
+				        </div>
+			    	</div>
+		    	</div>
+		    </div>  <!--  Fim do modal -->
+		
+		</div>	<!-- fragment modaisAutores -->
+		
+	</div> <!--  class container -->
+</body>
+</html>

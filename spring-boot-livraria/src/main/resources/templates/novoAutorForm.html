@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Livraria vers�o Web</title>
+
+<!--/*/ <th:block th:include="fragments/cabecalho :: head"></th:block> /*/-->
+
+</head>
+<body>
+	<div class="container">
+
+		<!--  INCLUI O TEMPLATE CONTENDO O MENU -->
+
+		<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+
+
+		<div class="row">
+			<h2>Novo Autor</h2>
+		</div>
+
+
+
+		<form action="#" th:action="@{/autor/cadastrar}" th:object="${autor}" method="POST" class="col-md-8">
+			<div class="row">
+				<div class="form-group">
+					<label for="primeiroNome">Nome</label>
+					<input type="text" th:field="*{primeiroNome}" class="form-control input-sm" placeholder="Primeiro Nome" />
+				</div>
+				<div class="form-group">
+					<label for="ultimoNome">Último Nome</label>
+					<input type="text" th:field="*{ultimoNome}" class="form-control input-sm" placeholder="Último Nome" />
+				</div>
+				<div class="form-group">
+					<label for="pais">País</label> 
+					<input type="text" th:field="*{pais}" class="form-control input-sm" placeholder="Pais" />
+				</div>
+				<button type="submit" class="btn btn-info btn-sm">Cadastrar</button>
+				<button type="reset" class="btn btn-default btn-sm">Cancelar</button>
+			</div>
+		</form>
+
+
+
+
+
+	</div>
+	<!--  fim do container -->
+
+	<p></p>
+
+	<!--  INCLUI O RODAP� DA P�GINA -->
+
+	<!--/*/ <th:block th:include="fragments/rodape :: footer"></th:block> /*/-->
+
+</body>
+</html>

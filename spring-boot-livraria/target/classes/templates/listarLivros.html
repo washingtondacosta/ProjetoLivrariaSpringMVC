@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Livraria versão Web</title>
+
+<!--/*/ <th:block th:include="fragments/cabecalho :: head"></th:block> /*/-->
+
+</head>
+<body>
+
+
+	<div class="container">
+		<!--  INCLUI O TEMPLATE CONTENDO O MENU -->
+		
+		<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+		
+		
+		<h2>Manutenção de Livros</h2>
+		
+			<!--  INCLUI O TEMPLATE CONTENDO OS ALERTAS DE CONFIRMAÇÃO DAS OPERAÇÕES -->
+		
+			<!--/*/ <th:block th:include="fragments/alertasLivros :: alertasLivros"></th:block> /*/-->
+			
+			<div th:if="${sucesso} == inclusao">
+				<script th:inline="javascript">
+					/*<![CDATA[*/
+						$("#inclusaoAlert").show();
+						window.setTimeout(function() {
+		    				$("#inclusaoAlert").fadeTo(500, 0).slideUp(500, function(){
+		        					$(this).remove(); 
+		    				});
+						}, 4000);
+					/*]]>*/
+				</script>
+			</div>
+			
+			<!--  CABE�ALHO DA TABELA DE LIVROS, INCLUINDO LINK PARA INCLUIR NOVO LIVRO -->
+      		<table class="table table-bordered table-condensed table-hover table-striped" style="margin: 0px !important">
+	          <tbody>
+	          <tr>
+	              <th class="info text-center" colspan="4">
+	                  Livros Cadastrados
+	                  <a class="close" style="font-size: medium; margin-left: 10px" title="Novo Autor"
+	                     th:href="@{/livro/cadastrar}">
+	                      <i class="glyphicon glyphicon-plus"></i>
+	                  </a>
+	              </th>
+	          </tr>
+	          </tbody>
+      		</table>
+      		<table class="table table-bordered table-condensed table-hover table-striped"
+             	style="margin: 0px !important; border-top-width: 0;">
+	          <thead>
+	          	<tr>
+	              <th class="text-center">ID</th>
+	              <th>Título</th>
+	              <th>Preço</th>
+	              <th class="text-center">Ações</th>
+	            </tr>
+	          </thead>
+	          
+	          <!--  CORPO DA TABELA, INCLUINDO A LISTA DE LIVROS -->
+	          <tbody>
+	              <tr th:each="livro:${livros}">
+	                  <td style="width: 20%" align="center" th:text="${livro.livroID}">1</td>
+	                  <td style="width: 40%"><a href="detalharLivro" th:text="${livro.titulo}">Titulo</a></td>
+	                  <td style="width: 20%" th:text="${livro.preco}">Preço</td>
+	                  <td style="width: 20%" align="center">
+	                  	  <a th:href="@{/livro/alterar}">
+	                  	  	<button type="button" class="btn btn-xs btn-default"
+	                              title="Alterar"><i class="glyphicon glyphicon-pencil"></i></button>
+	                  	  </a>	
+	                  	  <a th:href="@{/livro/excluir}">
+	                      	<button type="button" class="btn btn-xs btn-default"
+	                              title="Excluir"><i class="glyphicon glyphicon-trash"></i></button>
+	                      </a>
+	                  </td>
+	              </tr>
+          	  </tbody>
+      		</table>
+		
+		
+	</div>  <!--  fim do container -->
+	
+	
+	<!--  INCLUI O RODAP� DA P�GINA -->
+	
+	<!--/*/ <th:block th:include="fragments/rodape :: footer"></th:block> /*/-->
+</body>
+</html>

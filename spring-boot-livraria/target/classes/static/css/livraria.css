@@ -1,0 +1,58 @@
+
+/* Barra horizontal acima da barra de navegação */
+.top-bar{
+    height:5px;
+    background:#ca2129;
+    margin-bottom:1px;
+}
+
+/* Barra de navegação */
+.navbar{
+    margin-bottom:1px;
+    background-color: #ced3ea;
+    font-weight: bold;
+}
+
+/* Hover sobre os elementos da barra de navegação */
+.navbar li:hover{
+    background:#e7e7e7;
+}
+
+/* Características do botão de login */
+li.login a{
+    background:#ca2129;
+    margin-bottom:-10px !important;
+    color:#ffffff !important;
+    padding-right:22px;
+    padding-left:22px;
+}
+
+li.login a:hover,.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+    background:#cccccc;
+}
+
+/* Estilização do jumbotron */
+.jumbotron {
+    padding:20px 30px 20px 30px;
+    margin:0px auto;
+    background: #7986CB ;
+    color:floralwhite;
+}
+
+.titulo {
+	padding:0px;
+}
+
+/* Linha do rodapé */
+.row-footer {
+  background-color: #AfAfAf;
+  margin: 50px auto;
+  padding: 20px 0px 20px 0px;
+}
+
+th {
+	align:center;
+}
+
+
+

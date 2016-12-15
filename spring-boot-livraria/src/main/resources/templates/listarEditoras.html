@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Livraria vers�o Web</title>
+
+<!--/*/ <th:block th:include="fragments/cabecalho :: head"></th:block> /*/-->
+
+</head>
+<body>
+
+
+	<div class="container">
+		<!--  INCLUI O TEMPLATE CONTENDO O MENU -->
+		
+		<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+		
+		
+		<h2>Manutenção de Editoras</h2>
+		
+		<!--  INCLUI O TEMPLATE CONTENDO OS ALERTAS DE CONFIRMAÇÃO DAS OPERAÇÕES -->
+		
+			<!--/*/ <th:block th:include="fragments/alertasEditoras :: alertasEditoras"></th:block> /*/-->
+			
+			<div th:if="${sucesso} == inclusao">
+				<script th:inline="javascript">
+					/*<![CDATA[*/
+						$("#inclusaoAlert").show();
+						window.setTimeout(function() {
+		    				$("#inclusaoAlert").fadeTo(500, 0).slideUp(500, function(){
+		        					$(this).remove(); 
+		    				});
+						}, 4000);
+					/*]]>*/
+				</script>
+			</div>
+			
+			<!--  CABE�ALHO DA TABELA DE EDITORAS, INCLUINDO LINK PARA INCLUIR NOVA EDITORA -->
+      		<table class="table table-bordered table-condensed table-hover table-striped" style="margin: 0px !important">
+	          <tbody>
+	          <tr>
+	              <th class="info text-center" colspan="4">
+	                  Editoras Cadastradas
+	                  <a class="close" style="font-size: medium; margin-left: 10px" title="Nova Editora"
+	                     th:href="@{/editora/cadastrar}">
+	                      <i class="glyphicon glyphicon-plus"></i>
+	                  </a>
+	              </th>
+	          </tr>
+	          </tbody>
+      		</table>
+      		<table class="table table-bordered table-condensed table-hover table-striped"
+             	style="margin: 0px !important; border-top-width: 0;">
+	          <thead>
+	          	<tr>
+	              <th class="text-center">ID</th>
+	              <th>Nome</th>
+	              <th>Cidade</th>
+	              <th class="text-center">Ações</th>
+	            </tr>
+	          </thead>
+	          
+	          <!--  CORPO DA TABELA, INCLUINDO A LISTA DE Editoras -->
+	          <tbody>
+	              <tr th:each="editora:${editoras}">
+	                  <td style="width: 5%" align="center" th:text="${editora.editoraID}">1</td>
+	                  <td style="width: 40%"><a href="detalharEditora" th:text="${editora.nome}">Teste</a></td>
+	                  <td style="width: 40%"><a href="detalharEditora" th:text="${editora.cidade}">Teste</a></td>
+	                  <td style="width: 40%" align="center">
+	                  	  <a th:href="@{#alterarEditoraModal}" data-toggle="modal" data-target="#alterarEditoraModal">
+	                  	  	<button type="button" class="btn btn-xs btn-default"
+	                              title="Alterar"><i class="glyphicon glyphicon-pencil"></i></button>
+	                  	  </a>	
+	                  	  <a th:href="@{#excluirEditoraModal}" data-toggle="modal" data-target="#excluirEditoraModal">
+	                      	<button type="button" class="btn btn-xs btn-default"
+	                              title="Excluir"><i class="glyphicon glyphicon-trash"></i></button>
+	                      </a>
+	                  </td>
+	              </tr>
+          	  </tbody>
+      		</table>
+	 	
+		
+	</div>  <!--  fim do container -->
+	
+	<!--/*/ <th:block th:include="fragments/rodape :: footer"></th:block> /*/-->
+</body>
+</html>

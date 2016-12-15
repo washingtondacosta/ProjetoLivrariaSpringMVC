@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Livraria versão Web</title>
+
+<!--/*/ <th:block th:include="fragments/cabecalho :: head"></th:block> /*/-->
+
+</head>
+<body>
+	<div class="container">
+	
+		<!--  INCLUI O TEMPLATE CONTENDO O MENU -->
+		
+		<!--/*/ <th:block th:include="fragments/menu :: menu"></th:block> /*/-->
+		
+		
+		<h2>Manutenção de Autores</h2>
+		
+			<!--  INCLUI O TEMPLATE CONTENDO OS ALERTAS DE CONFIRMAÇÃO DAS OPERAÇÕES -->
+		
+			<!--/*/ <th:block th:include="fragments/alertasAutores :: alertasAutores"></th:block> /*/-->
+			
+			<div th:if="${sucesso} == inclusao">
+				<script th:inline="javascript">
+					/*<![CDATA[*/
+						$("#inclusaoAlert").show();
+						window.setTimeout(function() {
+		    				$("#inclusaoAlert").fadeTo(500, 0).slideUp(500, function(){
+		        					$(this).remove(); 
+		    				});
+						}, 4000);
+					/*]]>*/
+				</script>
+			</div>
+			
+			<!--  CABE�ALHO DA TABELA DE AUTORES, INCLUINDO LINK PARA INCLUIR NOVO AUTOR -->
+      		<table class="table table-bordered table-condensed table-hover table-striped" style="margin: 0px !important">
+	          <tbody>
+	          <tr>
+	              <th class="info text-center" colspan="4">
+	                  Autores Cadastrados
+	                  <a class="close" style="font-size: medium; margin-left: 10px" title="Novo Autor"
+	                     th:href="@{/autor/cadastrar}">
+	                      <i class="glyphicon glyphicon-plus"></i>
+	                  </a>
+	              </th>
+	          </tr>
+	          </tbody>
+      		</table>
+      		<table class="table table-bordered table-condensed table-hover table-striped"
+             	style="margin: 0px !important; border-top-width: 0;">
+	          <thead>
+	          	<tr>
+	              <th class="text-center">ID</th>
+	              <th>Nome</th>
+	              <th class="text-center">Ações</th>
+	            </tr>
+	          </thead>
+	          
+	          <!--  CORPO DA TABELA, INCLUINDO A LISTA DE AUTORES -->
+	          <tbody>
+	              <tr th:each="autor:${autores}">
+	                  <td style="width: 20%" align="center" th:text="${autor.autorID}">1</td>
+	                  <td style="width: 60%"><a href="detalharAutor" th:text="${autor.primeiroNome + ' ' + autor.ultimoNome}">Rui Barbosa</a></td>
+	                  <td style="width: 20%" align="center">
+	                  	  <a th:href="@{#alterarAutorModal}" data-toggle="modal" data-target="#alterarAutorModal">
+	                  	  	<button type="button" class="btn btn-xs btn-default"
+	                              title="Alterar"><i class="glyphicon glyphicon-pencil"></i></button>
+	                  	  </a>	
+	                  	  <a th:href="@{#excluirAutorModal}" data-toggle="modal" data-target="#excluirAutorModal">
+	                      	<button type="button" class="btn btn-xs btn-default"
+	                              title="Excluir"><i class="glyphicon glyphicon-trash"></i></button>
+	                      </a>
+	                  </td>
+	              </tr>
+          	  </tbody>
+      		</table>
+		
+		
+	</div>  <!--  fim do container -->
+	
+	
+	<!--  INCLUI O RODAP� DA P�GINA -->
+	
+	<!--/*/ <th:block th:include="fragments/rodape :: footer"></th:block> /*/-->
+	
+	
+	
+	
+	
+	
+</body>
+</html>
